@@ -21,7 +21,23 @@ def create_boxOffice(boxoffice):
     query_database(query, params)
 
 
+def get_box_offices_table():
+    query = "SELECT * FROM boxOffice"
+    query_database(query)
+
+def update_box_offices_table(boxOffice):
+    query = "UPDATE box_offices SET gross = ? WHERE boxofficeId = ?"
+    params = (boxOffice.gross, boxOffice.boxofficeId)
+    query_database(query, params)
+
+def delete_box_offices_table(boxofficeId):
+    query = "DELETE FROM box_offices WHERE boxofficeId = ?"
+    params = (boxofficeId, ) #python tuple, jei be skliaustu ir kablelio, butu  variable
+    query_database(query, params)
+
+
 boxoffice1 = Boxoffice(None, 50000000, "Filmas1")
+
 create_boxOffice(boxoffice1)
 
 
